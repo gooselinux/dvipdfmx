@@ -1,0 +1,39 @@
+diff -up dvipdfmx-20090708/src/dvipdfmx.c.ebb-to-ebbx dvipdfmx-20090708/src/dvipdfmx.c
+--- dvipdfmx-20090708/src/dvipdfmx.c.ebb-to-ebbx	2009-09-15 13:48:07.071988198 +0100
++++ dvipdfmx-20090708/src/dvipdfmx.c	2009-09-15 13:48:29.232050928 +0100
+@@ -807,11 +807,11 @@ main (int argc, char *argv[]) 
+   {
+     const char *base = xbasename(argv[0]);
+ 
+-    if (!(strcmp(base, "dvipdfm") && strcmp(base, "ebb")))
++    if (!(strcmp(base, "dvipdfm") && strcmp(base, "ebbx")))
+       compat_mode = 1;
+ 
+     if (!(strcmp(base, "extractbb") && strcmp(base, "xbb") &&
+-	  strcmp(base, "ebb")))
++	  strcmp(base, "ebbx")))
+       return extractbb(argc, argv);
+   }
+ 
+diff -up dvipdfmx-20090708/src/Makefile.am.ebb-to-ebbx dvipdfmx-20090708/src/Makefile.am
+--- dvipdfmx-20090708/src/Makefile.am.ebb-to-ebbx	2009-09-15 13:49:26.639987749 +0100
++++ dvipdfmx-20090708/src/Makefile.am	2009-09-15 13:50:27.855050812 +0100
+@@ -39,5 +39,5 @@ dvipdfmx_DEPENDENCIES = $(ZLIBDEP) $(LIB
+ dvipdfmx_LDFLAGS = @dvipdfmx_LDFLAGS@
+ 
+ install-exec-hook:
+-	cd $(DESTDIR)$(bindir) && rm -f ebb && $(LN_S) dvipdfmx ebb
++	cd $(DESTDIR)$(bindir) && rm -f ebbx && $(LN_S) dvipdfmx ebbx
+ 	cd $(DESTDIR)$(bindir) && rm -f extractbb && $(LN_S) dvipdfmx extractbb
+diff -up dvipdfmx-20090708/src/Makefile.in.ebb-to-ebbx dvipdfmx-20090708/src/Makefile.in
+--- dvipdfmx-20090708/src/Makefile.in.ebb-to-ebbx	2009-09-15 13:49:32.351988463 +0100
++++ dvipdfmx-20090708/src/Makefile.in	2009-09-15 13:50:21.122050455 +0100
+@@ -1517,7 +1517,7 @@ uninstall-am: uninstall-binPROGRAMS
+ 
+ 
+ install-exec-hook:
+-	cd $(DESTDIR)$(bindir) && rm -f ebb && $(LN_S) dvipdfmx ebb
++	cd $(DESTDIR)$(bindir) && rm -f ebbx && $(LN_S) dvipdfmx ebbx
+ 	cd $(DESTDIR)$(bindir) && rm -f extractbb && $(LN_S) dvipdfmx extractbb
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
